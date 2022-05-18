@@ -10,6 +10,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -61,5 +62,9 @@ class child_test : public Linear{
 public:
     string func_1();//
     virtual string func_2();
+    bool func_8();
+    const map<string, int> IndexMap ={{"bt",    0},
+                                {"phone", 1},
+                                {"avs",   2}};
 };
 #endif /* Header_h */

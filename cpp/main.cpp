@@ -10,7 +10,7 @@
 #include "Header.h"
 #include <algorithm>
 #include <vector>
-
+#define TR true
 using namespace std;
 void wool::test_pr(void){
     data_->printf_();
@@ -47,8 +47,21 @@ string child_test::func_1(){
 }
 
 string child_test::func_2(){
+//    map<string, int>::iterator iter;
+//    for(iter = IndexMap.begin();iter != IndexMap.end();iter++){
+//        cout<< iter->first<<"  "<<iter->second <<endl;
+//    }
     printf("child_test %s\n",__func__);
     return " ";
+}
+
+bool child_test::func_8(){
+//    map<string, int>::iterator iter;
+//    for(iter = IndexMap.begin();iter != IndexMap.end();iter++){
+//        cout<< iter->first<<"  "<<iter->second <<endl;
+//    }
+    printf("child_test %s\n",__func__);
+    return TR;
 }
 int main(int argc, const char * argv[]) {
     vector<int> myvector{ 4,2,3,1,5 };
@@ -68,19 +81,32 @@ int main(int argc, const char * argv[]) {
 //    cout<<"y2: "<< y2 <<endl;
     
 
-//    child_test child;
-//    Linear *lin = &child;
-//    child_test *child_ptr = &child;
-//    lin->func_1();//如果父类指针指向子类，隐藏函数的功能失效
-//    lin->func_2();//重写父类函数
-//    lin->func_3();
-//
-//    child_ptr->func_1();
-//    child_ptr->Linear::func_1();
-//    child_ptr->func_2();
+    child_test child;
+    Linear *lin = &child;
+    child_test *child_ptr = &child;
+    lin->func_1();//如果父类指针指向子类，隐藏函数的功能失效
+    lin->func_2();//重写父类函数
+    lin->func_3();
+
+    child_ptr->func_1();
+    child_ptr->Linear::func_1();
+    child_ptr->func_2();
+    //map<string, int>::const_iterator iter2;//被const修饰的map 要用const_iterator 迭代器
+    for(map<string, int>::const_iterator iter2 = child.IndexMap.begin();iter2 != child.IndexMap.end();iter2++){
+        if(iter2->first.compare("bt") == 0 || iter2->first.compare("abc") == 0 || iter2->first.compare("abc") == 0){
+            cout<<"YES!!!!"<<iter2->first<<endl;
+            if(child.func_8())
+                cout<<"TR!!!!"<<endl;
+            continue;
+        }
+        cout<<"zjian!!!!"<<endl;
+        if(iter2->first.compare("123") != 0)
+            cout<<"NO!!!!"<<endl;
+    }
     
-    Linear lin(3,4);
-    lin.func_4().func_5();
+//
+//    Linear lin(3,4);
+//    lin.func_4().func_5();
     
     char str[] = "glad to test something";
     char *p = str;
@@ -89,7 +115,16 @@ int main(int argc, const char * argv[]) {
     p1++;
     p = reinterpret_cast<char *>(p1);
     printf("result is %s\n", p);
-    
+    unsigned char test_1 = 1;
+    int test_2 = 1;
+    if (test_1 == test_2) {
+        cout<<"ok!"<<endl;
+    }
+    int mVolumeIndex[14] = {7,7,11,11,11,11,11,11,11,11,11,7,7,7};
+    printf("size of %d\n",sizeof(mVolumeIndex)/sizeof(int));
+   
    
     return 0;
 }
+
+
