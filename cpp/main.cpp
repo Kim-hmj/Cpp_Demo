@@ -12,6 +12,7 @@
 #include <vector>
 #define TR true
 using namespace std;
+int child_test::a_st = 4;
 void wool::test_pr(void){
     data_->printf_();
 }
@@ -51,7 +52,8 @@ string child_test::func_2(){
 //    for(iter = IndexMap.begin();iter != IndexMap.end();iter++){
 //        cout<< iter->first<<"  "<<iter->second <<endl;
 //    }
-    printf("child_test %s\n",__func__);
+    
+    printf("child_test %s %d\n",__func__,a_st);
     return " ";
 }
 
@@ -87,6 +89,11 @@ int main(int argc, const char * argv[]) {
     lin->func_1();//如果父类指针指向子类，隐藏函数的功能失效
     lin->func_2();//重写父类函数
     lin->func_3();
+    child.a = 4;
+
+    child_test child2;
+    child2.a = 5;
+    cout<< child.a <<child2.a<<child2.a_st<<endl;
 
     child_ptr->func_1();
     child_ptr->Linear::func_1();
@@ -104,6 +111,7 @@ int main(int argc, const char * argv[]) {
             cout<<"NO!!!!"<<endl;
     }
     
+    
 //
 //    Linear lin(3,4);
 //    lin.func_4().func_5();
@@ -112,7 +120,7 @@ int main(int argc, const char * argv[]) {
     char *p = str;
     p++;
     int *p1 = reinterpret_cast<int *>(p);
-    p1++;
+    printf("result is %d\n", *p1);
     p = reinterpret_cast<char *>(p1);
     printf("result is %s\n", p);
     unsigned char test_1 = 1;
@@ -121,7 +129,8 @@ int main(int argc, const char * argv[]) {
         cout<<"ok!"<<endl;
     }
     int mVolumeIndex[14] = {7,7,11,11,11,11,11,11,11,11,11,7,7,7};
-    printf("size of %d\n",sizeof(mVolumeIndex)/sizeof(int));
+    printf("size of %d\n",sizeof(mVolumeIndex)/sizeof( mVolumeIndex[0]));
+    
    
    
     return 0;

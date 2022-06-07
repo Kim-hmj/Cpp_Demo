@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <vector>
 #include <map>
-
+#include <unistd.h>
 using namespace std;
 
 struct setting{
@@ -60,6 +60,9 @@ public:
 
 class child_test : public Linear{
 public:
+    child_test(){}
+    int a ;
+    static int a_st;
     string func_1();//
     virtual string func_2();
     bool func_8();
@@ -67,4 +70,5 @@ public:
                                 {"phone", 1},
                                 {"avs",   2}};
 };
+
 #endif /* Header_h */
