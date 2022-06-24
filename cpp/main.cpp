@@ -56,7 +56,10 @@ string child_test::func_2(){
     printf("child_test %s %d\n",__func__,a_st);
     return " ";
 }
-
+int func_3(int a ,int b, int c){
+    printf(" %s %d %d %d \n",__func__ ,a, b, c);
+    return 0;
+}
 bool child_test::func_8(){
 //    map<string, int>::iterator iter;
 //    for(iter = IndexMap.begin();iter != IndexMap.end();iter++){
@@ -64,6 +67,16 @@ bool child_test::func_8(){
 //    }
     printf("child_test %s\n",__func__);
     return TR;
+}
+template<typename... Args>//不定参数的模版
+void child_test::func_10(string event, string mode, Args... args){
+    const int get_args[] = {args...};//int或者string等等，决定传入的啥
+    for (auto it = std::begin(get_args);
+            it != std::end(get_args);
+            it++) {
+        cout << *it <<endl;
+            }
+    printf("child_test %s %d\n",__func__,a_st);
 }
 int main(int argc, const char * argv[]) {
     vector<int> myvector{ 4,2,3,1,5 };
@@ -98,6 +111,7 @@ int main(int argc, const char * argv[]) {
     child_ptr->func_1();
     child_ptr->Linear::func_1();
     child_ptr->func_2();
+    child_ptr->func_10("here", " test", 123,3523, 32423);
     //map<string, int>::const_iterator iter2;//被const修饰的map 要用const_iterator 迭代器
     for(map<string, int>::const_iterator iter2 = child.IndexMap.begin();iter2 != child.IndexMap.end();iter2++){
         if(iter2->first.compare("bt") == 0 || iter2->first.compare("abc") == 0 || iter2->first.compare("abc") == 0){
@@ -129,9 +143,21 @@ int main(int argc, const char * argv[]) {
         cout<<"ok!"<<endl;
     }
     int mVolumeIndex[14] = {7,7,11,11,11,11,11,11,11,11,11,7,7,7};
-    printf("size of %d\n",sizeof(mVolumeIndex)/sizeof( mVolumeIndex[0]));
+    float a_per = -13.45;
+    printf("size of %lu %f\n",sizeof(mVolumeIndex)/sizeof( mVolumeIndex[0]),a_per);
+    double abc = (double)4/22;
+    cout<< abc<<endl;
+    while(1){
+        for(int i = 0; i<= 10;i++){
+            cout<< i <<endl;
+            if(i == 3)
+                break;//退出循环
+        }
+        cout<< abc<<endl;
+        break;
+    }
     
-   
+    
    
     return 0;
 }

@@ -64,8 +64,11 @@ public:
     int a ;
     static int a_st;
     string func_1();//
+    int func_3(int a ,int b, int c = 3);
     virtual string func_2();
     bool func_8();
+    template<typename... Args>
+    void func_10(string event, string mode, Args... args);
     const map<string, int> IndexMap ={{"bt",    0},
                                 {"phone", 1},
                                 {"avs",   2}};
